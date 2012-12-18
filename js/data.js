@@ -6,12 +6,23 @@ define(function(require) {
 		tasks: {
 
 			list: function() {
-				return Promise.resolved([
-					{ name: "Cosa" },
-					{ name: "Otra" },
-					{ name: "Ala" },
-					{ name: "Mas" },
-				]);
+				return Promise.resolved([{
+					id: 0,
+					name: "Cosa",
+					pomos: 3
+				}, {
+					id: 1,
+					name: "Otra",
+					pomos: 1
+				}, {
+					id: 2,
+					name: "Ala",
+					pomos: 4
+				}, {
+					id: 3,
+					name: "Mas",
+					pomos: 2
+				}]);
 				//localStorage.tasks);
 			},
 
