@@ -3,17 +3,52 @@
  ***********/
 
 .visible {
-	display: block;
+	display: block !important;
 }
 
 
-/*********
- * PAGES *
- *********/
+/**********
+ * GLOBAL *
+ **********/
+
+@background: #f0f0e1;
+@foreground: #53855d;
+
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+body {
+	background-color: @background;
+	color: @foreground;
+}
+
+h1, h2 {
+	color: ##c41f3a;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
 
 .page {
 	display: none;
 }
+
+.pomo {
+	float: left;
+	margin: 2px;
+	width: 11px;
+	height: 11px;
+	border-radius: 30px;
+}
+.pomo.pending {
+	background-color: #f0f0e1;
+}
+
 
 
 /*********
@@ -22,7 +57,61 @@
 
 .page#tasks {
 
+	@size: 77px;
+	@margin: 3px;
+	@content: 30px;
+
+	.action () {
+		position: absolute;
+		display: block;
+		width: @size;
+		height: 100%;
+		right: 0;
+		top: 0;
+
+		text-align: center;
+		font-family: 'arial';
+		font-size: @content;
+		padding-top: (@size - @content) / 2;
+	}
+
+	.content {
+		padding: 0;
+	}
+
+	.item-task > div {
+		background-color: @foreground;
+		color: @background;
+	}
+
 	.item-task {
+		position: relative;
 		list-style: none;
+		margin: @margin;
+		height: @size;
+
+		.row {
+			padding: 10px;
+			position: relative;
+			margin-right: @size + @margin;
+			height: 100%;
+
+			.name, .pomos {
+				margin-right: @size + @margin;
+			}
+
+
+			.edit {
+				.action;
+				background-image: url(../img/edit.png);
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+		}
+
+		.view {
+			.action;
+			background-color: #53855d;
+		}
 	}
 }

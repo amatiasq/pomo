@@ -29,7 +29,7 @@ define(function(require) {
 		tasks: function() {
 			$('.page.visible').removeClass('visible');
 			$('.page#tasks').addClass('visible');
-			var container = $('.page#tasks [data-type="content"]');
+			var container = $('.page#tasks .content');
 
 			data.tasks.list()
 				.method('map', templates.taskItem)

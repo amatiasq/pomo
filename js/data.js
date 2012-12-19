@@ -9,19 +9,19 @@ define(function(require) {
 				return Promise.resolved([{
 					id: 0,
 					name: "Cosa",
-					pomos: 3
+					pomos: Array(3)
 				}, {
 					id: 1,
 					name: "Otra",
-					pomos: 1
+					pomos: Array(1)
 				}, {
 					id: 2,
 					name: "Ala",
-					pomos: 4
+					pomos: Array(4)
 				}, {
 					id: 3,
 					name: "Mas",
-					pomos: 2
+					pomos: Array(2)
 				}]);
 				//localStorage.tasks);
 			},
