@@ -35,18 +35,13 @@ define(function(require) {
 		},
 
 		tasks: function() {
-			var tasks = new sections.tasks();
-			tasks.list.reset = task.list.reset.bind(task.list);
+			var list = sections.tasks.list;
+			$('.page.visible').removeClass('visible');
+			$('.page#tasks').addClass('visible');
 
-			this.tasks = function() {
-				$('.page.visible').removeClass('visible');
-				$('.page#tasks').addClass('visible');
-
-				data.tasks.list()
-					.method('map', instance(Model))
-					.then(task.list.reset);
-			};
-
+			data.tasks.list()
+				.method('map', instance(Model))
+				.then(list.reset.bind(list));
 		}
 	});
 

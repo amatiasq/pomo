@@ -15,6 +15,7 @@ define(function(require) {
 
 		render: function(task) {
 			var doc = document.createDocumentFragment();
+
 			this.list.forEach(function(item) {
 				doc.appendChild(new Task(item).$el[0]);
 			});
@@ -24,6 +25,5 @@ define(function(require) {
 
 	});
 
-	return List;
-	//return new List();
+	return new List();
 });
