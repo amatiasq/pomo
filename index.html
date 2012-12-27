@@ -19,9 +19,9 @@
 				<div class="row">
 					<div class="name">{{ name }}</div>
 					<div class="pomos">{{#each pomos}}<div class="pomo pending"></div>{{/each}}</div>
-					<a class="edit" href="edit/{{id}}"></a>
+					<a class="edit" href="#/edit/{{id}}"></a>
 				</div>
-				<a class="view" href="pomodoro/{{id}}">&gt;</a>
+				<a class="view" href="#/pomodoro/{{id}}">&gt;</a>
 			</li>
 		</script>
 	</head>
@@ -31,7 +31,7 @@
 			<h1>Pomo</h1>
 			<h2>Tasks</h2>
 
-			<a href="#create">+ Create new task...</a>
+			<a href="#/create">+ Create new task...</a>
 			<ul class="content">content</ul>
 		</div>
 
