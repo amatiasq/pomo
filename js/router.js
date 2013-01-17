@@ -1,5 +1,6 @@
 define(function(require) {
 
+	require('lib/promise').debug = true;
 	var Model = require('Backbone').Model;
 	var Router = require('Backbone').Router;
 	var data = require('data');
@@ -16,14 +17,14 @@ define(function(require) {
 	return Router.extend({
 
 		routes: {
-			'/tasks': 'tasks',
-			'/create': 'render',
-			'/retrospective': 'render',
-			'/settings': 'render',
+			'^/tasks': 'tasks',
+			'^/create': 'render',
+			'^/retrospective': 'render',
+			'^/settings': 'render',
 
-			'/edit/:id': 'render',
-			'/pomodoro/:id': 'render',
-			'/break/:id': 'render',
+			'^/edit/:id': 'render',
+			'^/pomodoro/:id': 'render',
+			'^/break/:id': 'render',
 
 			'*actions': 'init'
 		},
@@ -39,9 +40,7 @@ define(function(require) {
 			$('.page.visible').removeClass('visible');
 			$('.page#tasks').addClass('visible');
 
-			data.tasks.list()
-				.method('map', instance(Model))
-				.then(list.reset.bind(list));
+			data.tasks.list().then(list.reset.bind(list));
 		}
 	});
 

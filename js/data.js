@@ -8,20 +8,20 @@ define(function(require) {
 			list: function() {
 				return Promise.resolved([{
 					id: 0,
-					name: "Cosa",
-					pomos: Array(3)
+					name: "Lost somewhere",
+					pomos: 3
 				}, {
 					id: 1,
-					name: "Otra",
-					pomos: Array(1)
+					name: "A good rule for rocket experimenters to follow",
+					pomos: 2
 				}, {
 					id: 2,
-					name: "Ala",
-					pomos: Array(4)
+					name: "Flight Control will be known",
+					pomos: 3
 				}, {
 					id: 3,
-					name: "Mas",
-					pomos: Array(2)
+					name: "The view of the Earth from the Moon",
+					pomos: 2
 				}]);
 				//localStorage.tasks);
 			},

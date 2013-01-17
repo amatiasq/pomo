@@ -6,7 +6,6 @@
 	display: block !important;
 }
 
-
 /**********
  * GLOBAL *
  **********/
@@ -21,27 +20,22 @@
 }
 
 body {
+	padding: 46px 30px;
 	background-color: @background;
 	color: @foreground;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: lighter;
+	font-size: 27px;
+	width: 640px;
 }
 
-h1, h2 {
-	font-family: arial;
-	color: #c41f3a;
-}
-
-h1 {
-	text-decoration: underline;
-}
-
-h2 {
-	margin-top: -40px;
-	float: right;
-}
-
-a {
+a, a:focus, a:active, a:visited {
 	text-decoration: none;
-	color: inherit;
+	color: #53855d;
+}
+
+a:hover {
+	text-decoration: underline;
 }
 
 .page {
@@ -59,6 +53,13 @@ a {
 	background-color: #f0f0e1;
 }
 
+.cosa {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.4;
+}
+
 
 
 /*********
@@ -70,6 +71,137 @@ a {
 	@size: 77px;
 	@margin: 3px;
 	@content: 30px;
+
+	header {
+		font-size: 13pt;
+
+		h1 {
+			@titleRed: #c41f39;
+
+			margin: -10px 0 43px -5px;
+			letter-spacing: 3px;
+			color: @titleRed;
+			font-size: 62px;
+			font-weight: normal;
+			font-family: 'Montserrat', sans-serif;
+
+			float: left;
+
+			div {
+				background-color: @titleRed;
+				height: 6px;
+				margin: 9px 5px 0 5px;
+			}
+		}
+
+		h2 {
+			float: right;
+			margin: 10px -1px 0 0;
+			color: #c41f3a;
+			font-weight: lighter;
+			font-size: 37px;
+			font-family: 'Open Sans', sans-serif;
+		}
+	}
+
+	section {
+		clear: both;
+
+		h1 {
+			color: #53855d;
+			font-size: 28px;
+			margin: 0 0 44px 13px;
+		}
+
+		ul {
+			@itemBackground: #53855d;
+
+			color: #f0f0e0;
+			background-color: @itemBackground;
+
+			li {
+				border-bottom: 2px solid @background;
+
+				.task-item {
+					background: @itemBackground;
+					overflow: hidden;
+					height: 115px;
+
+					&:hover {
+					 	background: #3e6b45;
+					}
+
+					.info {
+						float: left;
+						padding: 13px 19px;
+						width: 65%;
+						height: 100%;
+						position: relative;
+
+						h2 {
+							color: #f0f0e0;
+							line-height: 1.2;
+							font-weight: lighter;
+						}
+
+						.dots {
+							position: absolute;
+							left: 20px;
+							bottom: 15px;
+
+							text-indent: -9999px;
+							background: url(../img/point.png) left;
+							height: 15px;
+							width: 15px;
+						}
+					}
+
+					.interaction {
+						float: right;
+
+						.detail {
+							font-size: 0;
+							float: right;
+							width: 113px;
+							height: 115px;
+							background: url(../img/arrow.png);
+							background-position: 33px 32px/*center center*/;
+							background-repeat: no-repeat;
+							border-left: 3px solid @background;
+						}
+
+						.edit {
+							font-size: 0;
+							float: right;
+							width: 75px;
+							height: 115px;
+							background: url(../img/edit.png);
+							background-position: 0 center;
+							background-repeat: no-repeat;
+							/*
+							display: block;
+							background: url(../img/edit.png);
+							height: 0;
+							width: 48px;
+							padding-top: 48px;
+							position: relative;
+							right: -15px;
+							top: 86px;
+							*/
+						}
+
+						.drag {
+							display: none;
+						}
+
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
 
 	.action () {
 		position: absolute;
@@ -126,3 +258,4 @@ a {
 		}
 	}
 }
+*/

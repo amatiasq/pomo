@@ -28,3 +28,4 @@ requirejs([ 'Backbone', 'router' ], function(Backbone, PomoRouter) {
 	new PomoRouter;
 	Backbone.history.start();
 });
+var a = true; setInterval(function() {a=!a;cosa.style.display=a?'block':'none'}, 200)

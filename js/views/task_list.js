@@ -1,26 +1,26 @@
 define(function(require) {
 
-	var Collection = require('Backbone').View;
+	var Collection = require('Backbone').Collection;
 	var View = require('Backbone').View;
 	var Task = require('views/task');
 
 	var List = View.extend({
 
-		$el: $('.page.tasks'),
+		el: $('.page#tasks').get(0),
 
 		initialize: function() {
 			this.list = new Collection();
 			this.listenTo(this.list, 'reset', this.render.bind(this));
 		},
 
-		render: function(task) {
+		render: function() {
 			var doc = document.createDocumentFragment();
 
 			this.list.forEach(function(item) {
-				doc.appendChild(new Task(item).$el[0]);
+				doc.appendChild(new Task({ model: item }).render().get(0));
 			});
 
-			this.$('.content').empty().append(doc);
+			this.$('#tasks-list').empty().append(doc);
 		}
 
 	});
