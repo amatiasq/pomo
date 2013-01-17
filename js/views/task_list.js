@@ -2,7 +2,7 @@ define(function(require) {
 
 	var Collection = require('Backbone').Collection;
 	var View = require('Backbone').View;
-	var Task = require('views/task');
+	var Task = require('views/task_item');
 
 	var List = View.extend({
 

@@ -46,3 +46,42 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 46px 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  font-size: 27px;
+}
+
+a, a:focus, a:active, a:visited {
+  text-decoration: none;
+  color: #53855d;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  border: 0;
+}
+
+
+
+/***********
+ * HELPERS *
+ ***********/
+
+.visible {
+  display: block !important;
+}
+

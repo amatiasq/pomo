@@ -5,7 +5,8 @@ define(function(require) {
 	var Router = require('Backbone').Router;
 	var data = require('data');
 	var sections = {
-		tasks: require('views/task_list')
+		tasks: require('views/task_list'),
+		create: require('views/create'),
 	};
 
 	function instance(Type) {
@@ -17,21 +18,21 @@ define(function(require) {
 	return Router.extend({
 
 		routes: {
-			'^/tasks': 'tasks',
-			'^/create': 'render',
-			'^/retrospective': 'render',
-			'^/settings': 'render',
+			'^tasks': 'tasks',
+			'create': 'create',
+			'^retrospective': 'render',
+			'^settings': 'render',
 
-			'^/edit/:id': 'render',
-			'^/pomodoro/:id': 'render',
-			'^/break/:id': 'render',
+			'^edit/:id': 'render',
+			'^pomodoro/:id': 'render',
+			'^break/:id': 'render',
 
 			'*actions': 'init'
 		},
 
 		init: function() {
 			console.log('init');
-			this.navigate('/tasks');
+			this.navigate('tasks');
 			this.tasks();
 		},
 
@@ -41,6 +42,17 @@ define(function(require) {
 			$('.page#tasks').addClass('visible');
 
 			data.tasks.list().then(list.reset.bind(list));
+		},
+
+		create: function() {
+			$('.page.visible').removeClass('visible');
+			$('.page#create').addClass('visible');
+
+			sections.create.render()
+		},
+
+		render: function() {
+			console.log('dentro');
 		}
 	});
 

@@ -1,40 +1,10 @@
-/***********
- * HELPERS *
- ***********/
-
-.visible {
-	display: block !important;
-}
-
-/**********
- * GLOBAL *
- **********/
-
 @background: #f0f0e1;
 @foreground: #53855d;
-
-* {
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
-}
+@highlight: #c41f3a;
 
 body {
-	padding: 46px 30px;
 	background-color: @background;
 	color: @foreground;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: lighter;
-	font-size: 27px;
-}
-
-a, a:focus, a:active, a:visited {
-	text-decoration: none;
-	color: #53855d;
-}
-
-a:hover {
-	text-decoration: underline;
 }
 
 .page {
@@ -52,11 +22,55 @@ a:hover {
 	background-color: #f0f0e1;
 }
 
-.cosa {
+
+/* Smartphones (portrait) */
+@media only screen
+and (max-width : 480px) {
+	.task-item .info { width: 27% !important }
+}
+
+@media only screen
+and (min-width : 480px)
+and (max-width : 768px) {
+	.task-item .info { width: 55% !important }
+}
+
+/* iPads (portrait and landscape) */
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px) {
+	.task-item .info { width: 73% !important }
+}
+
+/* Desktops and laptops */
+@media only screen
+and (min-width : 1024px)
+and (max-width : 1824px) {
+	.task-item .info { width: 80% !important }
+}
+
+/* Large screens */
+@media only screen
+and (min-width : 1824px) {
+	.task-item .info { width: 89% !important }
+}
+
+header h2 {
+	position: absolute;
+	top: 55px;
+	right: 30px;
+	color: @highlight;
+	font-weight: lighter;
+	font-size: 37px;
+	font-family: 'Open Sans', sans-serif;
+	/* margin: 10px -1px 0 0; */
+}
+
+#cosa {
 	position: absolute;
 	top: 0;
 	left: 0;
-	opacity: 0.4;
+	opacity: 0.5;
 }
 
 
@@ -92,15 +106,6 @@ a:hover {
 				margin: 9px 5px 0 5px;
 			}
 		}
-
-		h2 {
-			float: right;
-			margin: 10px -1px 0 0;
-			color: #c41f3a;
-			font-weight: lighter;
-			font-size: 37px;
-			font-family: 'Open Sans', sans-serif;
-		}
 	}
 
 	section {
@@ -129,7 +134,6 @@ a:hover {
 					&:hover {
 					 	background: #3e6b45;
 					}
-
 					.info {
 						float: left;
 						padding: 13px 19px;
@@ -142,7 +146,6 @@ a:hover {
 							line-height: 1.2;
 							font-weight: lighter;
 						}
-
 						.dots {
 							position: absolute;
 							left: 20px;
@@ -158,41 +161,26 @@ a:hover {
 					.interaction {
 						float: right;
 
-						.detail {
-							font-size: 0;
+						.detail, .edit {
 							float: right;
-							width: 113px;
+							font-size: 0;
 							height: 115px;
+							background-repeat: no-repeat;
+						}
+						.detail {
+							width: 113px;
 							background: url(../img/arrow.png);
 							background-position: 33px 32px/*center center*/;
-							background-repeat: no-repeat;
-							border-left: 3px solid @background;
+							border-left: 2px solid @background;
 						}
-
 						.edit {
-							font-size: 0;
-							float: right;
 							width: 75px;
-							height: 115px;
 							background: url(../img/edit.png);
 							background-position: 0 center;
-							background-repeat: no-repeat;
-							/*
-							display: block;
-							background: url(../img/edit.png);
-							height: 0;
-							width: 48px;
-							padding-top: 48px;
-							position: relative;
-							right: -15px;
-							top: 86px;
-							*/
 						}
-
 						.drag {
 							display: none;
 						}
-
 					}
 				}
 			}
@@ -200,61 +188,42 @@ a:hover {
 	}
 }
 
-/*
-
-	.action () {
-		position: absolute;
-		display: block;
-		width: @size;
-		height: 100%;
-		right: 0;
-		top: 0;
-
-		text-align: center;
-		font-family: 'arial';
-		font-size: @content;
-		padding-top: (@size - @content) / 2;
-	}
-
-	.content {
-		padding: 0;
-	}
-
-	.item-task > div {
-		background-color: @foreground;
-		color: @background;
-	}
-
-	.item-task {
-		position: relative;
-		list-style: none;
-		margin: @margin;
-		height: @size;
-
-		.row {
-			padding: 10px;
-			position: relative;
-			margin-right: @size + @margin;
-			height: 100%;
-
-			.name, .pomos {
-				margin-right: @size + @margin;
-			}
-
-
-			.edit {
-				.action;
-				background-image: url(../img/edit.png);
-				background-repeat: no-repeat;
-				background-position: center center;
+.page#create {
+	section {
+		span {
+			display: block;
+			border: 20px solid @foreground;
+			margin: 102px 60px 67px;
+			padding: 16px 20px 28px;
+			color: black;
+			font-size: 37px;
+		}
+		h3 {
+			color: @highlight;
+			margin-left: 59px;
+			font-size: 26px;
+		}
+		.estimated {
+			margin: 16px 0 0 60px;
+			li {
+				float: left;
+				width: 70px;
+				height: 70px;
+				margin-right: 10px;
+				border-radius: 35px;
+				background-color: @highlight;
 			}
 		}
-
-		.view {
-			.action;
-			background-color: @foreground;
-			color: @background;
+		#create-add-pomo {
+			font-size: 0;
+			width: 70px;
+			height: 70px;
+			margin-right: 10px;
+			border-radius: 35px;
+			background-color: #9b9b8c;
+			background-image: url(../img/add-big.png);
+			background-position: center center;
+			background-repeat: no-repeat;
 		}
 	}
 }
-*/

@@ -24,11 +24,22 @@
 					<span class="dots" style="width: {{dots pomos }}">{{ pomos }} pomodoros</span>
 				</div>
 				<div class="interaction">
-					<a class="detail" href="#/pomodoro/{{ id }}">detail</a>
-					<a class="edit" href="#/edit/{{ id }}">edit</a>
+					<a class="detail" href="#pomodoro/{{ id }}">detail</a>
+					<a class="edit" href="#edit/{{ id }}">edit</a>
 					<span class="drag">drag</span>
 				</div>
 			</div>
+		</script>
+
+		<script type="text/template" id="page/edit">
+			<span contenteditable>Mi tarea de ejemplo</span>
+			<div>
+				<h3>ESTIMATED POMODOROS:</h3>
+				<ul class="estimated"><li><li></ul>
+				<button id="create-add-pomo">Add pomodoro</button>
+			</div>
+			<button id="create-cancel">CANCEL</button>
+			<button id="create-do">CREATE</button>
 		</script>
 	</head>
 	<body>
@@ -38,11 +49,19 @@
 				<h2>TASKS</h2>
 			</header>
 			<section>
-				<h1><a href="#/create">+ Create new task...</a></h1>
+				<h1><a href="#create">+ Create new task...</a></h1>
 				<ul id="tasks-list"></ul>
 			</section>
 		</div>
 
+		<div id="create" class="page">
+			<header>
+				<h2>NEW TASK</h2>
+			</header>
+			<section></section>
+		</div>
+
+		<img id="cosa" src="pomo.png">
 		<script data-main="js/main" src="js/lib/require.js"></script>
 	</body>
 </html>
