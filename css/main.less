@@ -5,6 +5,7 @@
 body {
 	background-color: @background;
 	color: @foreground;
+	min-width: 480px;
 }
 
 .page {
@@ -55,6 +56,43 @@ and (min-width : 1824px) {
 	.task-item .info { width: 89% !important }
 }
 
+/*675px*/
+@media only screen
+and (max-height : 675px) {
+	.page#edit {
+		.main-action {
+			position: static;
+		}
+		#edit-cancel {
+			margin-left: 10.3%;
+			width: 34.5%;
+		}
+		#edit-do {
+			margin-left: 2.3%;
+			width: 41.3%;
+		}
+	}
+}
+
+@media only screen
+and (min-height : 675px) {
+	.page#edit {
+		.main-action {
+			position: fixed;
+			bottom: 120px;
+		}
+		#edit-cancel {
+			width: 31.3%;
+			left: 14%;
+		}
+		#edit-do {
+			width: 37.5%;
+			left: 48.5%;
+		}
+	}
+}
+
+
 header h2 {
 	position: absolute;
 	top: 55px;
@@ -71,6 +109,7 @@ header h2 {
 	top: 0;
 	left: 0;
 	opacity: 0.5;
+	display: none;
 }
 
 
@@ -169,13 +208,13 @@ header h2 {
 						}
 						.detail {
 							width: 113px;
-							background: url(../img/arrow.png);
+							background-image: url(../img/arrow.png);
 							background-position: 33px 32px/*center center*/;
 							border-left: 2px solid @background;
 						}
 						.edit {
 							width: 75px;
-							background: url(../img/edit.png);
+							background-image: url(../img/edit.png);
 							background-position: 0 center;
 						}
 						.drag {
@@ -188,7 +227,7 @@ header h2 {
 	}
 }
 
-.page#create {
+.page#edit {
 	section {
 		span {
 			display: block;
@@ -198,32 +237,53 @@ header h2 {
 			color: black;
 			font-size: 37px;
 		}
-		h3 {
-			color: @highlight;
-			margin-left: 59px;
-			font-size: 26px;
-		}
+
 		.estimated {
-			margin: 16px 0 0 60px;
-			li {
-				float: left;
-				width: 70px;
-				height: 70px;
-				margin-right: 10px;
-				border-radius: 35px;
-				background-color: @highlight;
+			margin: 0 60px;
+			h3 {
+				color: @highlight;
+				font-size: 26px;
+			}
+			ul {
+				margin-top: 6px;
+				li {
+					float: left;
+					width: 70px;
+					height: 70px;
+					margin: 10px 10px 0 0;
+					border-radius: 35px;
+					background-color: @highlight;
+				}
 			}
 		}
-		#create-add-pomo {
+		#edit-add-pomo {
 			font-size: 0;
 			width: 70px;
 			height: 70px;
-			margin-right: 10px;
+			margin: 10px 10px 0 0;
 			border-radius: 35px;
 			background-color: #9b9b8c;
 			background-image: url(../img/add-big.png);
 			background-position: center center;
 			background-repeat: no-repeat;
 		}
+		.main-action {
+			letter-spacing: 2px;
+			color: @background;
+			font-size: 31px;
+			font-weight: lighter;
+			margin-top: 50px;
+			padding: 34px 0;
+		}
+		#edit-cancel, #edit-delete {
+			background: @highlight;
+		}
+		#edit-do {
+			background: @foreground;
+		}
 	}
+}
+
+html, body {
+	min-height: 100%;
 }

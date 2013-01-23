@@ -15,7 +15,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -68,11 +68,7 @@ a, a:focus, a:active, a:visited {
 }
 
 a:hover {
-  text-decoration: underline;
-}
-
-button {
-  border: 0;
+  text-decoration: none;
 }
 
 

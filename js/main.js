@@ -25,8 +25,8 @@ requirejs.config({
 });
 
 requirejs([ 'Backbone', 'router' ], function(Backbone, PomoRouter) {
-	new PomoRouter;
-	Backbone.history.start();
+	new PomoRouter().init()
+		.then(Backbone.history.start.bind(Backbone.history));
 });
 
 var a = true;

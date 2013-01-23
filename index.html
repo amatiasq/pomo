@@ -32,14 +32,14 @@
 		</script>
 
 		<script type="text/template" id="page/edit">
-			<span contenteditable>Mi tarea de ejemplo</span>
-			<div>
+			<span contenteditable>{{ name }}</span>
+			<div class="estimated">
 				<h3>ESTIMATED POMODOROS:</h3>
-				<ul class="estimated"><li><li></ul>
-				<button id="create-add-pomo">Add pomodoro</button>
+				<ul>{{#times pomos }}<li>{{/times}}</ul>
+				<button id="edit-add-pomo">Add pomodoro</button>
 			</div>
-			<button id="create-cancel">CANCEL</button>
-			<button id="create-do">CREATE</button>
+			<button id="edit-cancel" class="main-action">CANCEL</button>
+			<button id="edit-do" class="main-action">CREATE</button>
 		</script>
 	</head>
 	<body>
@@ -54,9 +54,9 @@
 			</section>
 		</div>
 
-		<div id="create" class="page">
+		<div id="edit" class="page">
 			<header>
-				<h2>NEW TASK</h2>
+				<h2>TASK</h2>
 			</header>
 			<section></section>
 		</div>

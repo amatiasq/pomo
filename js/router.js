@@ -4,10 +4,13 @@ define(function(require) {
 	var Model = require('Backbone').Model;
 	var Router = require('Backbone').Router;
 	var data = require('data');
+	var list = require('collections/tasks');
 	var sections = {
 		tasks: require('views/task_list'),
-		create: require('views/create'),
+		edit: require('views/edit'),
 	};
+
+
 
 	function instance(Type) {
 		return function(item) {
@@ -15,40 +18,45 @@ define(function(require) {
 		};
 	}
 
+	function show(id) {
+		$('.page.visible').removeClass('visible');
+		$('.page#' + id).addClass('visible');
+	}
+
 	return Router.extend({
 
 		routes: {
-			'^tasks': 'tasks',
+			'tasks': 'tasks',
 			'create': 'create',
 			'^retrospective': 'render',
 			'^settings': 'render',
 
-			'^edit/:id': 'render',
+			'edit/:id': 'edit',
 			'^pomodoro/:id': 'render',
 			'^break/:id': 'render',
 
-			'*actions': 'init'
+			'*actions': 'render'
 		},
 
 		init: function() {
-			console.log('init');
-			this.navigate('tasks');
-			this.tasks();
+			return data.tasks.list().then(list.reset.bind(list));
 		},
 
 		tasks: function() {
-			var list = sections.tasks.list;
-			$('.page.visible').removeClass('visible');
-			$('.page#tasks').addClass('visible');
-
-			data.tasks.list().then(list.reset.bind(list));
+			show('tasks');
 		},
 
 		create: function() {
-			$('.page.visible').removeClass('visible');
-			$('.page#create').addClass('visible');
+			show('edit');
+			sections.edit.render({
+				name: 'Mi tarea de ejemplo',
+				pomos: 2
+			})
+		},
 
-			sections.create.render()
+		edit: function(id) {
+			show('edit');
+			sections.edit.render(list.get(id));
 		},
 
 		render: function() {
