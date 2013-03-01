@@ -1,9 +1,8 @@
 define(function(require) {
 
 	var itemTpl = require('tmpl!page/tasks/item')
-	var View = require('Backbone').View;
 
-	var Item = View.extend({
+	return Backbone.View.extend({
 
 		tagName: 'li',
 
@@ -19,6 +18,4 @@ define(function(require) {
 
 	});
 
-	return Item;
-
-})
+});

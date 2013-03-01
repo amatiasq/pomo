@@ -1,8 +1,5 @@
 define(function(require) {
 
-	var Model = require('Backbone').Model;
-	var Handlebars = require('Handlebars');
-
 	Handlebars.registerHelper('dots', function(count, options) {
 		return (count * 20) + 'px';
 	});

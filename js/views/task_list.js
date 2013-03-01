@@ -1,27 +1,27 @@
 define(function(require) {
 
-	var View = require('Backbone').View;
-	var Tasks = require('collections/tasks');
+	var Tasks = require('data/tasks');
 	var Task = require('views/task_item');
 
-	var List = View.extend({
+	var list = new Tasks();
 
-		el: $('.page#tasks').get(0),
+	return new (Backbone.View.extend({
+
+		el: '.page#tasks',
 
 		initialize: function() {
-			this.listenTo(Tasks, 'reset', this.render.bind(this));
+			this.listenTo(list, 'reset', this.render.bind(this));
+			list.fetch();
 		},
 
 		render: function() {
 			var doc = document.createDocumentFragment();
 
-			Tasks.forEach(function(item) {
+			list.forEach(function(item) {
 				doc.appendChild(new Task({ model: item }).render().get(0));
 			});
 
 			this.$('#tasks-list').empty().append(doc);
 		}
-	});
-
-	return new List();
+	}));
 });

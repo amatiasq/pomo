@@ -12,7 +12,6 @@
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet/less" type="text/css" href="css/main.less">
-		<script src="js/lib/less.js"></script>
 
 		<!--link rel="stylesheet" href="css/normalize.min.css">
 		<script src="js/vendor/modernizr-2.6.2.min.js"></script-->
@@ -43,25 +42,45 @@
 		</script>
 	</head>
 	<body>
-		<div id="tasks" class="page">
-			<header>
-				<h1>Pomo <div></div></h1>
-				<h2>TASKS</h2>
-			</header>
-			<section>
-				<h1><a href="#create">+ Create new task...</a></h1>
-				<ul id="tasks-list"></ul>
-			</section>
-		</div>
 
-		<div id="edit" class="page">
-			<header>
-				<h2>TASK</h2>
-			</header>
-			<section></section>
+		<div id="page-content">
+
+
+			<!-- TASK -->
+			<div id="tasks" class="page">
+				<header>
+					<h1>Pomo <div></div></h1>
+					<h2>TASKS</h2>
+				</header>
+				<section>
+					<h1><a href="#create">+ Create new task...</a></h1>
+					<ul id="tasks-list"></ul>
+				</section>
+			</div>
+			<!-- TASK -->
+
+
+			<!-- EDIT -->
+			<div id="edit" class="page">
+				<header>
+					<h2>TASK</h2>
+				</header>
+				<section></section>
+			</div>
+			<!-- EDIT -->
+
+
 		</div>
 
 		<img id="cosa" src="pomo.png">
-		<script data-main="js/main" src="js/lib/require.js"></script>
+
+		<div style="display:none">
+			<script type="text/javascript" src="js/lib/handlebars-1.0.rc.1.js"></script>
+			<script type="text/javascript" src="js/lib/underscore.js"></script>
+			<script type="text/javascript" src="js/lib/jquery-1.8.3.js"></script>
+			<script type="text/javascript" src="js/lib/backbone.js"></script>
+			<script type="text/javascript" src="js/lib/backbone.localStorage.js"></script>
+			<script data-main="js/main" src="js/lib/require.js"></script>
+		</div>
 	</body>
 </html>

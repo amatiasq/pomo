@@ -1,12 +1,12 @@
 define(function(require) {
 
-	var View = require('Backbone').View;
 	var data = require('data');
-	var template = require('tmpl!page/edit')
+	var template = require('tmpl!page/edit');
+	var Task = require('data/tasks').Model;
 
-	var Edit = View.extend({
+	return new (Backbone.View.extend({
 
-		el: $('.page#edit').get(0),
+		el: 'section#edit',
 
 		events: {
 			'click .estimated li': 'removePomo',
@@ -32,16 +32,17 @@ define(function(require) {
 		},
 
 		editTask: function() {
-			return data.tasks.save({
+			var self = this;
+			return new Task({
 				name: this.$('span').text(),
 				pomos: this.$('.estimated ul').children().length,
-			}).then(this.back.bind(this));
+			}).save({
+				success: function() { self.back() }
+			});
 		},
 
 		back: function() {
 			window.history.back();
 		}
-	});
-
-	return new Edit();
+	}));
 });

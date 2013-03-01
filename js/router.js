@@ -1,31 +1,11 @@
 define(function(require) {
 
-	require('lib/promise').debug = true;
-	var Model = require('Backbone').Model;
-	var Router = require('Backbone').Router;
-	var data = require('data');
-	var list = require('collections/tasks');
-	var sections = {
-		tasks: require('views/task_list'),
-		edit: require('views/edit'),
-	};
+	var page = require('views/page');
 
-
-
-	function instance(Type) {
-		return function(item) {
-			return new Type(item);
-		};
-	}
-
-	function show(id) {
-		$('.page.visible').removeClass('visible');
-		$('.page#' + id).addClass('visible');
-	}
-
-	return Router.extend({
+	var Router = Backbone.Router.extend({
 
 		routes: {
+			'': 'tasks',
 			'tasks': 'tasks',
 			'create': 'create',
 			'^retrospective': 'render',
@@ -38,30 +18,32 @@ define(function(require) {
 			'*actions': 'render'
 		},
 
-		init: function() {
-			return data.tasks.list().then(list.reset.bind(list));
+		initialize: function() {
+			Backbone.history.start();
 		},
 
 		tasks: function() {
-			show('tasks');
+			page.show('tasks');
+			require('views/tasks').render();
 		},
 
 		create: function() {
-			show('edit');
-			sections.edit.render({
-				name: 'Mi tarea de ejemplo',
-				pomos: 2
-			})
+			page.show('create');
+			require('views/create').render();
 		},
 
-		edit: function(id) {
-			show('edit');
-			sections.edit.render(list.get(id));
+		edit: function() {
+			page.show('edit');
+			require('views/edit').render();
 		},
 
 		render: function() {
-			console.log('dentro');
+			page.show('');
+			console.log('Default handler');
 		}
+
 	});
+
+	return new Router();
 
 });
