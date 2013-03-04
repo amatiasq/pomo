@@ -1,4 +1,5 @@
 define(function(require) {
+	"use strict";
 
 	var Tasks = require('data/tasks');
 	var Task = require('views/task_item');
@@ -7,7 +8,7 @@ define(function(require) {
 
 	return new (Backbone.View.extend({
 
-		el: '.page#tasks',
+		el: 'section#tasks',
 
 		initialize: function() {
 			this.listenTo(list, 'reset', this.render.bind(this));

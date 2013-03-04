@@ -1,6 +1,7 @@
 define(function(require) {
+	"use strict";
 
-	var itemTpl = require('tmpl!page/tasks/item')
+	var itemTpl = require('tmpl!page/tasks/item');
 
 	return Backbone.View.extend({
 

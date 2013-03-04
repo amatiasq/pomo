@@ -1,4 +1,7 @@
+/*jshint -W069 */
+
 define(function(require) {
+	"use strict";
 
 	Handlebars.registerHelper('dots', function(count, options) {
 		return (count * 20) + 'px';
@@ -12,12 +15,12 @@ define(function(require) {
 		load: function(name, parentRequire, done) {
 			var fn = Handlebars.compile(document.getElementById(name).innerHTML);
 			done(function(config) {
-				if (config.toJSON)
+				if (config && config.toJSON)
 					config = config.toJSON();
 
-				return fn(config || {})
-			})
+				return fn(config || {});
+			});
 		}
-	}
+	};
 
 });

@@ -1,4 +1,5 @@
 define(function(require) {
+	"use strict";
 
 	var Promise = require('promise');
 	var Task = require('data/tasks').Model;
@@ -16,12 +17,13 @@ define(function(require) {
 		},
 
 		render: function(id) {
+			var self = this;
 			var task = id ? new Task.Model({ id: id }) : null;
 			this.current = id;
 
 			Promise.normalize(task && task.fetch()).then(function() {
-				this.$('header h2').html(id ? 'EDIT TASK' : 'NEW TASK');
-				this.$('section').html(template(task));
+				self.$('header h2').html(id ? 'EDIT TASK' : 'NEW TASK');
+				self.$('article').html(template(task));
 			});
 		},
 
@@ -39,9 +41,7 @@ define(function(require) {
 				id: this.current,
 				name: this.$('span').text(),
 				pomos: this.$('.estimated ul').children().length,
-			}).save({
-				success: function() { self.back() }
-			});
+			}).save().then(this.back.bind(this));
 		},
 
 		back: function() {

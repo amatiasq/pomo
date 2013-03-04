@@ -1,26 +1,32 @@
-requirejs.config({
-	baseUrl: 'js',
+(function() {
 
-	paths: {
-		'promise': 'lib/promise',
-	},
-})(['promise', 'lib/backbone.promise'], function(promise) {
-	promise.debug = true;
-	requirejs(['router']);
+	"use strict";
 
-	if ($('#cosa').length) {
-		var a = true;
-		setInterval(function() {
-			$('#cosa').toggleClass('hidden');
-			$('div#page-content').css('opacity', (a=!a) ? 0.5 : 1);
-		}, 500);
-	}
-});
+	requirejs.config({
+		baseUrl: 'js',
 
-/**
- * Imported Globals:
- *  - $
- *  - _
- *  - Backbone
- *  - Handlebars
- */
+		paths: {
+			'promise': 'lib/promise',
+		},
+	})(['promise', 'lib/backbone.promise'], function(promise) {
+		promise.debug = true;
+		requirejs(['router']);
+
+		if ($('#cosa').length) {
+			var a = true;
+			setInterval(function() {
+				$('#cosa').toggleClass('hidden');
+				$('div#page-content').css('opacity', (a=!a) ? 0.5 : 1);
+			}, 500);
+		}
+	});
+
+	/**
+	 * Imported Globals:
+	 *  - $
+	 *  - _
+	 *  - Backbone
+	 *  - Handlebars
+	 */
+
+})();
