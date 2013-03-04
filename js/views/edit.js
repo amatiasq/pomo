@@ -1,8 +1,8 @@
 define(function(require) {
 
-	var data = require('data');
-	var template = require('tmpl!page/edit');
+	var Promise = require('promise');
 	var Task = require('data/tasks').Model;
+	var template = require('tmpl!page/edit');
 
 	return new (Backbone.View.extend({
 
@@ -15,12 +15,14 @@ define(function(require) {
 			'click #edit-do': 'editTask',
 		},
 
-		render: function(data) {
-			if (data.toJSON)
-				data = data.toJSON();
+		render: function(id) {
+			var task = id ? new Task.Model({ id: id }) : null;
+			this.current = id;
 
-			this.$('header h2').html('id' in data ? 'EDIT TASK' : 'NEW TASK');
-			this.$('section').html(template(data));
+			Promise.normalize(task && task.fetch()).then(function() {
+				this.$('header h2').html(id ? 'EDIT TASK' : 'NEW TASK');
+				this.$('section').html(template(task));
+			});
 		},
 
 		addPomo: function() {
@@ -34,6 +36,7 @@ define(function(require) {
 		editTask: function() {
 			var self = this;
 			return new Task({
+				id: this.current,
 				name: this.$('span').text(),
 				pomos: this.$('.estimated ul').children().length,
 			}).save({

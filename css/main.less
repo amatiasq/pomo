@@ -1,15 +1,35 @@
+@import "reset.less";
+@import "medias.less";
+@import "list.less";
+@import "edit.less";
+
 @background: #f0f0e1;
 @foreground: #53855d;
 @highlight: #c41f3a;
 
+
+a, a:focus, a:active, a:visited {
+	text-decoration: none;
+	color: #53855d;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
 body {
+	padding: 46px 30px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: lighter;
+	font-size: 27px;
 	background-color: @background;
 	color: @foreground;
 	min-width: 480px;
-}
-
-.page {
-	display: none;
 }
 
 .pomo {
@@ -22,76 +42,6 @@ body {
 .pomo.pending {
 	background-color: #f0f0e1;
 }
-
-
-/* Smartphones (portrait) */
-@media only screen
-and (max-width : 480px) {
-	.task-item .info { width: 27% !important }
-}
-
-@media only screen
-and (min-width : 480px)
-and (max-width : 768px) {
-	.task-item .info { width: 55% !important }
-}
-
-/* iPads (portrait and landscape) */
-@media only screen
-and (min-width : 768px)
-and (max-width : 1024px) {
-	.task-item .info { width: 73% !important }
-}
-
-/* Desktops and laptops */
-@media only screen
-and (min-width : 1024px)
-and (max-width : 1824px) {
-	.task-item .info { width: 80% !important }
-}
-
-/* Large screens */
-@media only screen
-and (min-width : 1824px) {
-	.task-item .info { width: 89% !important }
-}
-
-/*675px*/
-@media only screen
-and (max-height : 675px) {
-	.page#edit {
-		.main-action {
-			position: static;
-		}
-		#edit-cancel {
-			margin-left: 10.3%;
-			width: 34.5%;
-		}
-		#edit-do {
-			margin-left: 2.3%;
-			width: 41.3%;
-		}
-	}
-}
-
-@media only screen
-and (min-height : 675px) {
-	.page#edit {
-		.main-action {
-			position: fixed;
-			bottom: 120px;
-		}
-		#edit-cancel {
-			width: 31.3%;
-			left: 14%;
-		}
-		#edit-do {
-			width: 37.5%;
-			left: 48.5%;
-		}
-	}
-}
-
 
 header h2 {
 	position: absolute;
@@ -106,182 +56,13 @@ header h2 {
 
 #cosa {
 	position: absolute;
+	z-index: -9999;
 	top: 0;
 	left: 0;
+}
+
+#cosa + #page-content {
 	opacity: 0.5;
-	display: none;
-}
-
-
-
-/*********
- * TASKS *
- *********/
-
-.page#tasks {
-
-	@size: 77px;
-	@margin: 3px;
-	@content: 30px;
-
-	header {
-		font-size: 13pt;
-
-		h1 {
-			@titleRed: #c41f39;
-
-			margin: -10px 0 43px -5px;
-			letter-spacing: 3px;
-			color: @titleRed;
-			font-size: 62px;
-			font-weight: normal;
-			font-family: 'Montserrat', sans-serif;
-
-			float: left;
-
-			div {
-				background-color: @titleRed;
-				height: 6px;
-				margin: 9px 5px 0 5px;
-			}
-		}
-	}
-
-	section {
-		clear: both;
-
-		h1 {
-			color: #53855d;
-			font-size: 28px;
-			margin: 0 0 44px 13px;
-		}
-
-		ul {
-			@itemBackground: #53855d;
-
-			color: #f0f0e0;
-			background-color: @itemBackground;
-
-			li {
-				border-bottom: 2px solid @background;
-
-				.task-item {
-					background: @itemBackground;
-					overflow: hidden;
-					height: 115px;
-
-					&:hover {
-					 	background: #3e6b45;
-					}
-					.info {
-						float: left;
-						padding: 13px 19px;
-						width: 65%;
-						height: 100%;
-						position: relative;
-
-						h2 {
-							color: #f0f0e0;
-							line-height: 1.2;
-							font-weight: lighter;
-						}
-						.dots {
-							position: absolute;
-							left: 20px;
-							bottom: 15px;
-
-							text-indent: -9999px;
-							background: url(../img/point.png) left;
-							height: 15px;
-							width: 15px;
-						}
-					}
-
-					.interaction {
-						float: right;
-
-						.detail, .edit {
-							float: right;
-							font-size: 0;
-							height: 115px;
-							background-repeat: no-repeat;
-						}
-						.detail {
-							width: 113px;
-							background-image: url(../img/arrow.png);
-							background-position: 33px 32px/*center center*/;
-							border-left: 2px solid @background;
-						}
-						.edit {
-							width: 75px;
-							background-image: url(../img/edit.png);
-							background-position: 0 center;
-						}
-						.drag {
-							display: none;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-.page#edit {
-	section {
-		span {
-			display: block;
-			border: 20px solid @foreground;
-			margin: 102px 60px 67px;
-			padding: 16px 20px 28px;
-			color: black;
-			font-size: 37px;
-		}
-
-		.estimated {
-			margin: 0 60px;
-			h3 {
-				color: @highlight;
-				font-size: 26px;
-			}
-			ul {
-				margin-top: 6px;
-				li {
-					float: left;
-					width: 70px;
-					height: 70px;
-					margin: 10px 10px 0 0;
-					border-radius: 35px;
-					background-color: @highlight;
-				}
-			}
-		}
-		#edit-add-pomo {
-			font-size: 0;
-			width: 70px;
-			height: 70px;
-			margin: 10px 10px 0 0;
-			border-radius: 35px;
-			background-color: #9b9b8c;
-			background-image: url(../img/add-big.png);
-			background-position: center center;
-			background-repeat: no-repeat;
-		}
-		.main-action {
-			letter-spacing: 2px;
-			color: @background;
-			font-size: 31px;
-			font-weight: lighter;
-			margin-top: 50px;
-			padding: 34px 0;
-		}
-		#edit-cancel, #edit-delete {
-			background: @highlight;
-		}
-		#edit-do {
-			background: @foreground;
-		}
-	}
 }
 
 html, body {

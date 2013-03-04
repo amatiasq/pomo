@@ -24,17 +24,17 @@ define(function(require) {
 
 		tasks: function() {
 			page.show('tasks');
-			require('views/tasks').render();
+			require('views/task_list').render();
 		},
 
 		create: function() {
-			page.show('create');
-			require('views/create').render();
-		},
-
-		edit: function() {
 			page.show('edit');
 			require('views/edit').render();
+		},
+
+		edit: function(id) {
+			page.show('edit');
+			require('views/edit').render(id);
 		},
 
 		render: function() {

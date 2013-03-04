@@ -5,8 +5,15 @@ define(function(require) {
 		el: 'div#page-content',
 
 		show: function(id) {
-			this.$el.children().addClass('hidden');
-			this.$('#' + id).removeClass('hidden');
+			this.$el.css('display', 'block');
+
+			this.show = function(id) {
+				$('#cosa').attr('src', 'design/' + id + '.png');
+				this.$el.children().addClass('hidden');
+				this.$('#' + id).removeClass('hidden');
+			};
+
+			return this.show(id);
 		}
 
 	}));

@@ -10,8 +10,8 @@
 
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet/less" type="text/css" href="css/main.less">
+		<script type="text/javascript" src="js/lib/less.js"></script>
 
 		<!--link rel="stylesheet" href="css/normalize.min.css">
 		<script src="js/vendor/modernizr-2.6.2.min.js"></script-->
@@ -43,36 +43,36 @@
 	</head>
 	<body>
 
-		<div id="page-content">
+		<img id="cosa" src="pomo.png">
+
+		<div id="page-content" style="display:none">
 
 
 			<!-- TASK -->
-			<div id="tasks" class="page">
+			<section id="tasks">
 				<header>
 					<h1>Pomo <div></div></h1>
 					<h2>TASKS</h2>
 				</header>
-				<section>
+				<article>
 					<h1><a href="#create">+ Create new task...</a></h1>
 					<ul id="tasks-list"></ul>
-				</section>
-			</div>
+				</article>
+			</section>
 			<!-- TASK -->
 
 
 			<!-- EDIT -->
-			<div id="edit" class="page">
+			<section id="edit">
 				<header>
 					<h2>TASK</h2>
 				</header>
-				<section></section>
-			</div>
+				<article></article>
+			</section>
 			<!-- EDIT -->
 
 
 		</div>
-
-		<img id="cosa" src="pomo.png">
 
 		<div style="display:none">
 			<script type="text/javascript" src="js/lib/handlebars-1.0.rc.1.js"></script>

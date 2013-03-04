@@ -1,0 +1,112 @@
+/*********
+ * TASKS *
+ *********/
+
+section#tasks {
+
+	@size: 77px;
+	@margin: 3px;
+	@content: 30px;
+
+	header {
+		font-size: 13pt;
+
+		h1 {
+			@titleRed: #c41f39;
+
+			margin: -10px 0 43px -5px;
+			letter-spacing: 3px;
+			color: @titleRed;
+			font-size: 62px;
+			font-weight: normal;
+			font-family: 'Montserrat', sans-serif;
+
+			float: left;
+
+			div {
+				background-color: @titleRed;
+				height: 6px;
+				margin: 9px 5px 0 5px;
+			}
+		}
+	}
+
+	article {
+		clear: both;
+
+		h1 {
+			color: #53855d;
+			font-size: 28px;
+			margin: 0 0 44px 13px;
+		}
+
+		ul {
+			@itemBackground: #53855d;
+
+			color: #f0f0e0;
+			background-color: @itemBackground;
+
+			li {
+				border-bottom: 2px solid @background;
+
+				.task-item {
+					background: @itemBackground;
+					overflow: hidden;
+					height: 115px;
+
+					&:hover {
+					 	background: #3e6b45;
+					}
+					.info {
+						float: left;
+						padding: 13px 19px;
+						width: 65%;
+						height: 100%;
+						position: relative;
+
+						h2 {
+							color: #f0f0e0;
+							line-height: 1.2;
+							font-weight: lighter;
+						}
+						.dots {
+							position: absolute;
+							left: 20px;
+							bottom: 15px;
+
+							text-indent: -9999px;
+							background: url(../img/point.png) left;
+							height: 15px;
+							width: 15px;
+						}
+					}
+
+					.interaction {
+						float: right;
+
+						.detail, .edit {
+							float: right;
+							font-size: 0;
+							height: 115px;
+							background-repeat: no-repeat;
+						}
+						.detail {
+							width: 113px;
+							background-image: url(../img/arrow.png);
+							background-position: 33px 32px/*center center*/;
+							border-left: 2px solid @background;
+						}
+						.edit {
+							width: 75px;
+							background-image: url(../img/edit.png);
+							background-position: 0 center;
+						}
+						.drag {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -4,9 +4,17 @@ requirejs.config({
 	paths: {
 		'promise': 'lib/promise',
 	},
-})(['promise'], function(promise) {
+})(['promise', 'lib/backbone.promise'], function(promise) {
 	promise.debug = true;
-	requirejs(['router'])
+	requirejs(['router']);
+
+	if ($('#cosa').length) {
+		var a = true;
+		setInterval(function() {
+			$('#cosa').toggleClass('hidden');
+			$('div#page-content').css('opacity', (a=!a) ? 0.5 : 1);
+		}, 500);
+	}
 });
 
 /**

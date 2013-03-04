@@ -1,0 +1,67 @@
+/* Smartphones (portrait) */
+@media only screen
+and (max-width : 480px) {
+	.task-item .info { width: 27% !important }
+}
+
+@media only screen
+and (min-width : 480px)
+and (max-width : 768px) {
+	.task-item .info { width: 55% !important }
+}
+
+/* iPads (portrait and landscape) */
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px) {
+	.task-item .info { width: 73% !important }
+}
+
+/* Desktops and laptops */
+@media only screen
+and (min-width : 1024px)
+and (max-width : 1824px) {
+	.task-item .info { width: 80% !important }
+}
+
+/* Large screens */
+@media only screen
+and (min-width : 1824px) {
+	.task-item .info { width: 89% !important }
+}
+
+/*675px*/
+@media only screen
+and (max-height : 675px) {
+	section#edit {
+		.main-action {
+			position: static;
+		}
+		#edit-cancel {
+			margin-left: 10.3%;
+			width: 34.5%;
+		}
+		#edit-do {
+			margin-left: 2.3%;
+			width: 41.3%;
+		}
+	}
+}
+
+@media only screen
+and (min-height : 675px) {
+	section#edit {
+		.main-action {
+			position: fixed;
+			bottom: 120px;
+		}
+		#edit-cancel {
+			width: 31.3%;
+			left: 14%;
+		}
+		#edit-do {
+			width: 37.5%;
+			left: 48.5%;
+		}
+	}
+}

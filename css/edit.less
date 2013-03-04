@@ -1,0 +1,56 @@
+section#edit {
+	article {
+		span {
+			display: block;
+			border: 20px solid @foreground;
+			margin: 102px 60px 67px;
+			padding: 16px 20px 28px;
+			color: black;
+			font-size: 37px;
+		}
+
+		.estimated {
+			margin: 0 60px;
+			h3 {
+				color: @highlight;
+				font-size: 26px;
+			}
+			ul {
+				margin-top: 6px;
+				li {
+					float: left;
+					width: 70px;
+					height: 70px;
+					margin: 10px 10px 0 0;
+					border-radius: 35px;
+					background-color: @highlight;
+				}
+			}
+		}
+		#edit-add-pomo {
+			font-size: 0;
+			width: 70px;
+			height: 70px;
+			margin: 10px 10px 0 0;
+			border-radius: 35px;
+			background-color: #9b9b8c;
+			background-image: url(../img/add-big.png);
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+		.main-action {
+			letter-spacing: 2px;
+			color: @background;
+			font-size: 31px;
+			font-weight: lighter;
+			margin-top: 50px;
+			padding: 34px 0;
+		}
+		#edit-cancel, #edit-delete {
+			background: @highlight;
+		}
+		#edit-do {
+			background: @foreground;
+		}
+	}
+}
