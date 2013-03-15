@@ -1,8 +1,8 @@
-define(function(require) {
-	"use strict";
+define(function() {
+	'use strict';
 
 	var Task = Backbone.Model.extend({
-		localStorage: new Backbone.LocalStorage("tasks"),
+		localStorage: new Backbone.LocalStorage('tasks'),
 
 		defaults: {
 			name: 'Untitled',
@@ -13,29 +13,29 @@ define(function(require) {
 	if (!localStorage.initialized) {
 		[{
 			id: 0,
-			name: "Lost somewhere",
+			name: 'Lost somewhere',
 			pomos: 3
 		}, {
 			id: 1,
-			name: "A good rule for rocket experimenters to follow",
+			name: 'A good rule for rocket experimenters to follow',
 			pomos: 2
 		}, {
 			id: 2,
-			name: "Flight Control will be known",
+			name: 'Flight Control will be known',
 			pomos: 3
 		}, {
 			id: 3,
-			name: "The view of the Earth from the Moon",
+			name: 'The view of the Earth from the Moon',
 			pomos: 2
 		}].forEach(function(data) {
 			new Task(data).save();
 		});
 
-		localStorage.initialized = "true";
+		localStorage.initialized = 'true';
 	}
 
 	return _.extend(Backbone.Collection.extend({
-		localStorage: new Backbone.LocalStorage("tasks"),
+		localStorage: new Backbone.LocalStorage('tasks'),
 		model: Task,
 	}), { Model: Task });
 

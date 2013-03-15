@@ -38,7 +38,13 @@
 				<button id="edit-add-pomo">Add pomodoro</button>
 			</div>
 			<button id="edit-cancel" class="main-action">CANCEL</button>
-			<button id="edit-do" class="main-action">CREATE</button>
+			<button id="edit-do" class="main-action">
+				{{#if isNew }}
+					CREATE
+				{{else}}
+					SAVE
+				{{/if}}
+			</button>
 		</script>
 	</head>
 	<body>

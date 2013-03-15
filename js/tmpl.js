@@ -1,9 +1,9 @@
 /*jshint -W069 */
 
-define(function(require) {
-	"use strict";
+define(function() {
+	'use strict';
 
-	Handlebars.registerHelper('dots', function(count, options) {
+	Handlebars.registerHelper('dots', function(count) {
 		return (count * 20) + 'px';
 	});
 
@@ -14,11 +14,12 @@ define(function(require) {
 	return {
 		load: function(name, parentRequire, done) {
 			var fn = Handlebars.compile(document.getElementById(name).innerHTML);
-			done(function(config) {
-				if (config && config.toJSON)
-					config = config.toJSON();
+			done(function() {
+				var args = _.toArray(arguments).map(function(arg) {
+					return arg && arg.toJSON ? arg.toJSON() : arg;
+				});
 
-				return fn(config || {});
+				return fn(args.reduce(_.extend, {}));
 			});
 		}
 	};

@@ -1,7 +1,6 @@
 define(function(require) {
-	"use strict";
+	'use strict';
 
-	var Promise = require('promise');
 	var Task = require('data/tasks').Model;
 	var template = require('tmpl!page/edit');
 
@@ -17,14 +16,24 @@ define(function(require) {
 		},
 
 		render: function(id) {
-			var self = this;
-			var task = id ? new Task.Model({ id: id }) : null;
-			this.current = id;
+			var title = this.$('header h2');
+			var content = this.$('article');
 
-			Promise.normalize(task && task.fetch()).then(function() {
-				self.$('header h2').html(id ? 'EDIT TASK' : 'NEW TASK');
-				self.$('article').html(template(task));
-			});
+			this.current = id;
+			if (id) {
+				var task = new Task({ id: id });
+				task.fetch().then().then(function() {
+					title.html('EDIT TASK');
+					content.html(template(task, { isNew: false }));
+				});
+			} else {
+				title.html('NEW TASK');
+				content.html(template({
+					name: 'Mi tarea de ejemplo',
+					pomos: 2,
+					isNew: true,
+				}));
+			}
 		},
 
 		addPomo: function() {
@@ -36,12 +45,14 @@ define(function(require) {
 		},
 
 		editTask: function() {
-			var self = this;
-			return new Task({
-				id: this.current,
+			var id = this.current;
+			var task = new Task({
+				id: id,
 				name: this.$('span').text(),
 				pomos: this.$('.estimated ul').children().length,
-			}).save().then(this.back.bind(this));
+			});
+
+			return task.save().then(this.back.bind(this));
 		},
 
 		back: function() {

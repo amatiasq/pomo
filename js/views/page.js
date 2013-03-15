@@ -1,5 +1,5 @@
-define(function(require) {
-	"use strict";
+define(function() {
+	'use strict';
 
 	return new (Backbone.View.extend({
 

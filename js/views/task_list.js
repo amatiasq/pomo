@@ -1,5 +1,5 @@
 define(function(require) {
-	"use strict";
+	'use strict';
 
 	var Tasks = require('data/tasks');
 	var Task = require('views/task_item');
@@ -11,11 +11,14 @@ define(function(require) {
 		el: 'section#tasks',
 
 		initialize: function() {
-			this.listenTo(list, 'reset', this.render.bind(this));
-			list.fetch();
+			this.listenTo(list, 'reset', this.update.bind(this));
 		},
 
 		render: function() {
+			list.fetch();
+		},
+
+		update: function() {
 			var doc = document.createDocumentFragment();
 
 			list.forEach(function(item) {
